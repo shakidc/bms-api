@@ -6,15 +6,15 @@ module.exports = function(app) {
     app.route('/')
         .get(bms.index);
 
-    app.route('/alatukur')
+    app.route('/api/data/alatukur')
         .get(bms.alatukur);
 
-    app.route('/dataalat/:id_alat,:tanggal')
+    app.route('/api/data/sensor/:id_alat,:tanggal')
 	.get(bms.dataalat);
 
-    app.route('/tambahdata/:id_alat,:kelembapan,:suhu,:wbgt,:lux,:co2,:anemo')
+    app.route('/api/data/tambah/sensor/:id_alat,:kelembapan,:suhu,:wbgt,:lux,:co2,:anemo')
 	.get(bms.tambahdata);
 
-    app.route('/tambahalat/:lokasi')
+    app.route('/api/data/tambah/alat/:lokasi')
 	.get(bms.tambahalat);
 };
