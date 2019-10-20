@@ -14,15 +14,44 @@ exports.alatukur = function(req, res) {
 };
 
 exports.index = function(req, res) {
-    response.ok("Hello from the Node JS RESTful side!", res)
+    res.sendfile('index.html')
+};
+
+exports.datafull = function(req, res){
+	var id_alat = req.params.id_alat;
+
+	connection.query('SELECT * FROM data WHERE id = ?',
+	[ id_alat ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	});
 };
 
 exports.dataalat = function(req, res){
 	var id_alat = req.params.id_alat;
 	var tanggal = req.params.tanggal;
 
-	connection.query('SELECT  * FROM data where id = ? AND DATE(waktu) = ?',
+	connection.query('SELECT  * FROM data WHERE id = ? AND DATE(waktu) = ?',
 	[ id_alat, tanggal ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	});
+};
+
+exports.dataalatlim = function(req, res){
+	var id_alat = req.params.id_alat;
+	var jumlah = Number(req.params.jumlah);
+
+	connection.query('SELECT * FROM data WHERE id = ? ORDER BY waktu DESC LIMIT ?',
+	[ id_alat, jumlah ],
 	function (error, rows, fields){
 		if(error){
 			console.log(error)
