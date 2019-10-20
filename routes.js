@@ -12,6 +12,9 @@ module.exports = function(app) {
     app.route('/api/data/full')
 	.get(bms.datafull);
 
+    app.route('/api/data/parameter/:sensor/id/:id_alat')
+	.get(bms.datasensor);
+
     app.route('/api/data/sensor/:id_alat/tanggal/:tanggal')
 	.get(bms.dataalat);
 

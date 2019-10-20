@@ -31,6 +31,72 @@ exports.datafull = function(req, res){
 	});
 };
 
+exports.datasensor = function(req, res){
+	var id_alat = req.params.id_alat;
+	var sensor = req.params.sensor;
+
+	if(sensor == 'kelembapan'){
+	connection.query('SELECT kelembapan FROM data WHERE id = ? ORDER BY waktu DESC LIMIT 1',
+	[ id_alat ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	})}
+	if(sensor == 'suhu'){
+	connection.query('SELECT suhu FROM data WHERE id = ? ORDER BY waktu DESC LIMIT 1',
+	[ id_alat ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	})}
+	if(sensor == 'wbgt'){
+	connection.query('SELECT wbgt FROM data WHERE id = ? ORDER BY waktu DESC LIMIT 1',
+	[ id_alat ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	})}
+	if(sensor == 'lux'){
+	connection.query('SELECT lux FROM data WHERE id = ? ORDER BY waktu DESC LIMIT 1',
+	[ id_alat ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	})}
+	if(sensor == 'co2'){
+	connection.query('SELECT co2 FROM data WHERE id = ? ORDER BY waktu DESC LIMIT 1',
+	[ id_alat ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	})}
+	if(sensor == 'anemo'){
+	connection.query('SELECT anemo FROM data WHERE id = ? ORDER BY waktu DESC LIMIT 1',
+	[ id_alat ],
+	function (error, rows, fields){
+		if(error){
+			console.log(error)
+		} else{
+			response.ok(rows, res)
+		}
+	})};
+};
+
 exports.dataalat = function(req, res){
 	var id_alat = req.params.id_alat;
 	var tanggal = req.params.tanggal;
